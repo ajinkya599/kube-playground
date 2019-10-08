@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: multi-pods-deployment
+  labels:
+    app: multi-pods
+spec:
+  replicas: 100
+  selector:
+    matchLabels:
+      app: multi-pods
+  template:
+    metadata:
+      labels:
+        app: multi-pods
+    spec:
+      containers:
+      - name: hello
+        image: hello-world:latest
+        ports:
+        - containerPort: 80
